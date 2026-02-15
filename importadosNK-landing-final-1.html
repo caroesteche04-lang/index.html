@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImportadosNK - Tecnología que conecta con vos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #1a2332;
+        }
+
+        /* Header */
+        header {
+            background: #253548;
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #0ea5e9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0ea5e9;
+            font-size: 24px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
+            opacity: 1;
+        }
+
+        .btn-header {
+            background: #0ea5e9;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-header:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a73 100%);
+            padding: 5rem 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400"><rect x="50" y="50" width="100" height="180" rx="20" fill="none" stroke="%230ea5e9" stroke-width="3" opacity="0.2"/><circle cx="100" cy="160" r="8" fill="%230ea5e9" opacity="0.3"/></svg>') no-repeat center right;
+            background-size: contain;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            max-width: 700px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: #0ea5e9;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #0284c7;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+        }
+
+        /* Categories Section */
+        .categories {
+            max-width: 1400px;
+            margin: -60px auto 4rem;
+            padding: 0 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: #2d3e50;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+            border-color: #0ea5e9;
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #0ea5e9;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .section {
+            background: #253548;
+            margin: 3rem auto;
+            padding: 3.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #0ea5e9;
+            display: inline-block;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .info-card {
+            background: #2d3e50;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #0ea5e9;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .info-card h3 {
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .info-card p, .info-card ul {
+            color: #d1d5db;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        /* Payment Methods */
+        .payment-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .payment-badge {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            border-left: 4px solid #10b981;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .highlight-box strong {
+            color: #10b981;
+            font-size: 1.1rem;
+        }
+
+        /* Devoluciones */
+        .warning-box {
+            background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .warning-box h4 {
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .warning-box ul li {
+            color: #fde68a;
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .warning-box ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            border-left: 4px solid #10b981;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .success-box h4 {
+            color: #34d399;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .success-box ul li {
+            color: #d1fae5;
+        }
+
+        .success-box ul li::before {
+            color: #34d399;
+        }
+
+        /* Contact Section */
+        .contact-banner {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a73 100%);
+            padding: 4rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+            border: 2px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .contact-banner h3 {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: #ffffff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-icon-circle {
+            width: 80px;
+            height: 80px;
+            background: rgba(14, 165, 233, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            border: 2px solid #0ea5e9;
+        }
+
+        .contact-item h4 {
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item p {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn-primary {
+            background: #10b981;
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .contact-btn-primary:hover {
+            background: #059669;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .contact-btn-secondary {
+            background: #ec4899;
+            color: white;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+        }
+
+        .contact-btn-secondary:hover {
+            background: #db2777;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+        }
+
+        /* Features Banner */
+        .features-banner {
+            background: #2d3e50;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 4rem auto;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(14, 165, 233, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 2.2rem;
+            border: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .feature-item h4 {
+            color: #0ea5e9;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-item p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2332;
+            border-top: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 3rem 30px 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            color: #0ea5e9;
+            font-style: italic;
+            margin-top: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .categories {
+                margin-top: 2rem;
+            }
+
+            .section {
+                padding: 2.5rem 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-banner {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 20px;
+            }
+
+            .hero {
+                padding: 3rem 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .payment-badges {
+                flex-direction: column;
+            }
+
+            .payment-badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">📱</div>
+                <span class="brand-name">Importados NK</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#envios">Envíos</a>
+                <a href="#pagos">Formas de Pago</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#contacto" class="btn-header">Ver ofertas</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Tecnología importada<br>al mejor precio</h1>
+            <p class="hero-subtitle">Celulares y electrónica original con garantía y envíos rápidos a todo el país</p>
+            <a href="https://wa.me/5493764189532" class="cta-button" target="_blank">Ver productos</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>Celulares</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎧</div>
+                <h3>Accesorios</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>Electrónica</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🔋</div>
+                <h3>Cargadores y baterías</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Banner -->
+    <div class="container">
+        <div class="features-banner">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-circle">🏆</div>
+                    <h4>Productos originales</h4>
+                    <p>Garantía de autenticidad</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-circle">🚚</div>
+                    <h4>Envíos a todo el país</h4>
+                    <p>Rápido y seguro</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-circle">🛡️</div>
+                    <h4>Garantía</h4>
+                    <p>Respaldo en cada compra</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-circle">💬</div>
+                    <h4>Atención personalizada</h4>
+                    <p>Te asesoramos siempre</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Envíos Section -->
+        <section class="section" id="envios">
+            <h2 class="section-title">🚚 Envíos a Todo el País</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-icon">📦</span>
+                    <h3>Envío Unitario GRATIS</h3>
+                    <p>Comprás un producto y el envío está a nuestro cargo. Sin costos adicionales para vos.</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🏢</span>
+                    <h3>Compras por Mayor</h3>
+                    <p>Para compras mayoristas, el envío corre por cuenta del cliente. Cotizamos la mejor tarifa para vos.</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🚛</span>
+                    <h3>Opciones de Envío</h3>
+                    <ul>
+                        <li>Andreani</li>
+                        <li>Vía Cargo</li>
+                        <li>Correo Argentino</li>
+                        <li>OCA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <strong>⏱️ Plazo de entrega:</strong> 2 días hábiles
+            </div>
+        </section>
+
+        <!-- Formas de Pago -->
+        <section class="section" id="pagos">
+            <h2 class="section-title">💳 Múltiples Formas de Pago</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.15rem; color: #d1d5db;">Elegí la forma de pago que más te convenga. Aceptamos:</p>
+            <div class="payment-badges">
+                <span class="payment-badge">💳 Tarjetas de Crédito/Débito</span>
+                <span class="payment-badge">🏦 Transferencia Bancaria</span>
+                <span class="payment-badge">💰 Depósito</span>
+                <span class="payment-badge">📱 Billeteras Virtuales</span>
+                <span class="payment-badge">₿ USDT (Criptomonedas)</span>
+                <span class="payment-badge">💵 USD (Dólares)</span>
+            </div>
+        </section>
+
+        <!-- Devoluciones y Cambios -->
+        <section class="section">
+            <h2 class="section-title">🔄 Política de Cambios</h2>
+            <p style="font-size: 1.15rem; margin-bottom: 2rem; color: #d1d5db;"><strong>Aceptamos cambios dentro de los 30 días corridos</strong> desde la fecha de compra, presentando factura o comprobante.</p>
+            
+            <div class="warning-box">
+                <h4>📋 Condiciones para el Cambio</h4>
+                <p style="color: #fde68a; margin-bottom: 1.5rem;">Para gestionar el cambio, el celular debe:</p>
+                <ul>
+                    <li>Estar en perfectas condiciones, sin golpes ni daños</li>
+                    <li>Conservar su caja original y accesorios completos</li>
+                    <li>No tener cuentas vinculadas (Google, iCloud u otras)</li>
+                    <li>No presentar señales de uso indebido</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <h4>✅ Motivos Válidos para Cambio</h4>
+                <ul>
+                    <li>Falla de fábrica comprobable</li>
+                    <li>Producto entregado incorrecto</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="section" id="contacto">
+            <h2 class="section-title">📞 Contactanos</h2>
+            <div class="contact-banner">
+                <h3>Estamos para ayudarte</h3>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">📱</div>
+                        <h4>WhatsApp</h4>
+                        <p>3764-189532</p>
+                        <p>3764-185098</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">📷</div>
+                        <h4>Instagram</h4>
+                        <p>@Impor_mayorista.nk</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">📧</div>
+                        <h4>Email</h4>
+                        <p>Impornsoportek@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-circle">🕐</div>
+                        <h4>Horarios</h4>
+                        <p>Lunes a Sábado</p>
+                        <p>9 a 12 hs | 16 a 19 hs</p>
+                    </div>
+                </div>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/5493764189532" class="contact-btn contact-btn-primary" target="_blank">
+                        💬 Escribinos por WhatsApp
+                    </a>
+                    <a href="https://instagram.com/Impor_mayorista.nk" class="contact-btn contact-btn-secondary" target="_blank">
+                        📷 Seguinos en Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Importados NK - Todos los derechos reservados</p>
+            <p class="footer-tagline">Tecnología que conecta con vos</p>
+        </div>
+    </footer>
+</body>
+</html>
